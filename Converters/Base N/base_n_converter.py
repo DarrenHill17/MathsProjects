@@ -11,7 +11,7 @@ def convert_bases(input_string: str, input_base, output_base) -> str:
     exponent = 0
     base10 = 0
     for digit in input_numbers[::-1]:
-        base10 += int(digit) * (input_base ** exponent)
+        base10 += float(digit) * (input_base ** exponent)
         exponent += 1
 
     # Assign base10 value to variable for calculations
@@ -26,6 +26,7 @@ def convert_bases(input_string: str, input_base, output_base) -> str:
 
     # Function return
     return f'{input_string} in base {input_base} converts to {output} in base {output_base}'
+    #return output
 
 # Output
-print(convert_bases('1_0_2_3', numpy.e, numpy.pi))
+print(convert_bases(convert_bases('12', numpy.pi, numpy.e), numpy.e, numpy.pi))
