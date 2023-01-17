@@ -52,7 +52,8 @@ class Complex:
             else:
                 print('Input type is invalid')
 
-    # def input_as_string(self)
+        # Fix polar form
+        # Must still add this code to ensure positive modulus and -pi < angle <= pi
 
     def get_re_component(self) -> float:
         '''Returns the Re(number)'''
@@ -152,4 +153,4 @@ testnum1 = Complex(2.983634, 6.78348, Complex.INPUT_RECT)
 testnum2 = Complex(2, -4, Complex.INPUT_RECT)
 testnum3 = Complex(0, 0, 0,'z=2-4i')
 
-print(ComplexMath.power(testnum1, 3.2).print(Complex.UNIT_RADIANS))
+print(ComplexMath.power(testnum1, 0).print(Complex.UNIT_RADIANS))
