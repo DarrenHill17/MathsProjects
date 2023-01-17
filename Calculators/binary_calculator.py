@@ -60,7 +60,7 @@ class BinaryMath:
             else: # 0+0
                 if carry == 1:
                     result = f'{result}{"1"}'
-                    carry = 0   
+                    carry = 0
                 else:
                     result = f'{result}{"0"}'
             i = i - 1
