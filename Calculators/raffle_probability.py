@@ -7,7 +7,7 @@ class RaffleProbability:
     def get_p_win(self, *args: tuple) -> float:
         probability_of_loss = 1
         for i in args:
-            probability_of_loss *= (1-i[0] / i[1])
+            probability_of_loss *= (1-(i[0] / i[1]))
         return (1 - probability_of_loss) * 100
 
     def test_strategies(self, entries: int, *existing_entries: int):
@@ -29,5 +29,5 @@ class RaffleProbability:
                 if p_win > max_probability:
                     max_probability = p_win
                     max_probability_combination = i
-                print ('For case', i, ' P =', p_win)
+                print ('For case', i, ' P =', p_win, '\n')
         print('Max Probability:', max_probability_combination, 'with', max_probability)
