@@ -12,7 +12,7 @@ class RaffleProbability:
 
     def test_strategies(self, entries: int, *existing_entries: int):
         draws = len(existing_entries)
-        l = it.combinations_with_replacement(range(entries+1), draws)
+        l = it.product(range(entries+1), repeat=draws)
         max_probability = 0
         max_probability_combination = None
         for i in l:
