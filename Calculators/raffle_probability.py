@@ -1,6 +1,9 @@
 import itertools as it
 
-class raffle_probability:
+class RaffleProbability:
+    def __init__(self) -> None:
+        pass
+
     def get_p_win(self, *args: tuple) -> float:
         probability_of_loss = 1
         for i in args:
