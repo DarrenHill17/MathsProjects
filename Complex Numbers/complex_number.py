@@ -54,6 +54,7 @@ class Complex:
 
         # Fix polar form
         # Must still add this code to ensure positive modulus and -pi < angle <= pi
+        self.angle = self.normalize_angle(self.angle)
 
     def get_re_component(self) -> float:
         '''Returns the Re(number)'''
@@ -70,6 +71,16 @@ class Complex:
     def get_angle(self) -> float:
         '''Return the polar angle of the number'''
         return self.angle
+
+    def normalize_angle(self, angle: float) -> float:
+        '''Normalize input angles to -pi < angle <= pi'''
+        if(angle <= -1 * numpy.pi):
+            while(angle <= -1 * numpy.pi):
+                angle += 2 * numpy.pi
+        elif(angle > numpy.pi):
+            while(angle > numpy.pi):
+                angle -= 2 * numpy.pi
+        return angle
         
     def print(self, angle_unit: int) -> str:
         '''Rectangular and polar print statement'''
