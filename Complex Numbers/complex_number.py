@@ -146,11 +146,3 @@ class ComplexMath:
     def power(num: Complex, exponent: float) -> Complex:
         '''Raises a complex number to a float exponent'''
         return Complex(num.get_modulus() ** exponent, num.get_angle() * exponent, Complex.INPUT_POLAR)
-
-
-# Testing Code
-testnum1 = Complex(2.983634, 6.78348, Complex.INPUT_RECT)
-testnum2 = Complex(2, -4, Complex.INPUT_RECT)
-testnum3 = Complex(0, 0, 0,'z=2-4i')
-
-print(ComplexMath.power(testnum1, 0).print(Complex.UNIT_RADIANS))
