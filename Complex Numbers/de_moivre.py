@@ -10,7 +10,7 @@ def find_roots(num: c.Complex, power: int) -> tuple[c.Complex]:
     return tuple(numbers)
 
 test_num = c.Complex(16, (2/3)*np.pi, c.Complex.INPUT_POLAR)
-test_power = 4
+test_power = 40
 
 for root in find_roots(test_num, test_power):
     print(root.print_polar(c.Complex.UNIT_RADIANS))
