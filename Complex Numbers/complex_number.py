@@ -74,14 +74,14 @@ class Complex:
 
     def normalize_angle(self, angle: float) -> float:
         '''Normalize input angles to -pi < angle <= pi'''
-        if(angle <= -1 * numpy.pi):
-            while(angle <= -1 * numpy.pi):
+        if angle <= -1 * numpy.pi:
+            while angle <= -1 * numpy.pi:
                 angle += 2 * numpy.pi
-        elif(angle > numpy.pi):
-            while(angle > numpy.pi):
+        elif angle > numpy.pi:
+            while angle > numpy.pi:
                 angle -= 2 * numpy.pi
         return angle
-        
+    
     def print(self, angle_unit: int) -> str:
         '''Rectangular and polar print statement'''
         if angle_unit == Complex.UNIT_RADIANS:
@@ -92,7 +92,7 @@ class Complex:
             return f'z={self.re_component}{self.im_component}i\nz={self.modulus}∠{return_angle}'
         else:
             return f'z={self.re_component}+{self.im_component}i\nz={self.modulus}∠{return_angle}'
-    
+
     def print_polar(self, angle_unit: int) -> str:
         '''{Polar print statement'''
         if angle_unit == Complex.UNIT_RADIANS:
@@ -139,7 +139,7 @@ class ComplexMath:
         re_sum = num1.get_re_component() * num2.get_re_component() - num1.get_im_component() * num2.get_im_component()
         im_sum = num1.get_re_component() * num2.get_im_component() + num1.get_im_component() * num2.get_re_component()
         return Complex(re_sum, im_sum, Complex.INPUT_RECT)
-    
+  
     @staticmethod
     def divide(num1: Complex, num2: Complex) -> Complex:
         '''Divides 2 complex numbers'''
@@ -149,7 +149,7 @@ class ComplexMath:
         denominator =  (num2.get_re_component() ** 2 + num2.get_im_component() ** 2)
         if float(re_term_numerator).is_integer() and float(im_term_numerator).is_integer() and float(denominator).is_integer():
             return Complex(re_term_numerator/ denominator, im_term_numerator / denominator, Complex.INPUT_RECT)
-        
+  
         # Number is not in the form x/y where x and y in R, thus use the quick method
         return Complex(num1.get_modulus() / num2.get_modulus(), num1.get_angle() - num2.get_angle(), Complex.INPUT_POLAR)
 
