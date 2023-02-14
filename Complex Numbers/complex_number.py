@@ -52,8 +52,7 @@ class Complex:
             else:
                 print('Input type is invalid')
 
-        # Fix polar form
-        # Must still add this code to ensure positive modulus and -pi < angle <= pi
+        # Normalize angle to: -pi < angle <= pi
         self.angle = self.normalize_angle(self.angle)
 
     def get_re_component(self) -> float:
@@ -90,8 +89,7 @@ class Complex:
             return_angle = self.angle * (180 / numpy.pi)
         if self.im_component < 0:
             return f'z={self.re_component}{self.im_component}i\nz={self.modulus}∠{return_angle}'
-        else:
-            return f'z={self.re_component}+{self.im_component}i\nz={self.modulus}∠{return_angle}'
+        return f'z={self.re_component}+{self.im_component}i\nz={self.modulus}∠{return_angle}'
 
     def print_polar(self, angle_unit: int) -> str:
         '''{Polar print statement'''
@@ -139,7 +137,7 @@ class ComplexMath:
         re_sum = num1.get_re_component() * num2.get_re_component() - num1.get_im_component() * num2.get_im_component()
         im_sum = num1.get_re_component() * num2.get_im_component() + num1.get_im_component() * num2.get_re_component()
         return Complex(re_sum, im_sum, Complex.INPUT_RECT)
-  
+
     @staticmethod
     def divide(num1: Complex, num2: Complex) -> Complex:
         '''Divides 2 complex numbers'''
@@ -149,7 +147,7 @@ class ComplexMath:
         denominator =  (num2.get_re_component() ** 2 + num2.get_im_component() ** 2)
         if float(re_term_numerator).is_integer() and float(im_term_numerator).is_integer() and float(denominator).is_integer():
             return Complex(re_term_numerator/ denominator, im_term_numerator / denominator, Complex.INPUT_RECT)
-  
+
         # Number is not in the form x/y where x and y in R, thus use the quick method
         return Complex(num1.get_modulus() / num2.get_modulus(), num1.get_angle() - num2.get_angle(), Complex.INPUT_POLAR)
 
@@ -157,3 +155,12 @@ class ComplexMath:
     def power(num: Complex, exponent: float) -> Complex:
         '''Raises a complex number to a float exponent'''
         return Complex(num.get_modulus() ** exponent, num.get_angle() * exponent, Complex.INPUT_POLAR)
+
+    @staticmethod
+    def find_roots(num: Complex, power: int) -> tuple[Complex]:
+        '''Calculates the roots of the equation x^n=a+bi using De Moivre's Theorem'''
+        numbers = []
+        for k in range(power):
+            output = Complex(num.get_modulus() ** (1/power), (num.get_angle() + 2 * numpy.pi * k)/power, Complex.INPUT_POLAR)
+            numbers.append(output)
+        return tuple(numbers)
