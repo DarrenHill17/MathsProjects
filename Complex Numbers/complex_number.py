@@ -147,6 +147,8 @@ class ComplexMath:
     @staticmethod
     def power(num: Complex, exponent: float) -> Complex:
         '''Raises a complex number to a float exponent'''
+        if exponent == 1:
+            return num
         return Complex(num.get_modulus() ** exponent, num.get_angle() * exponent, Complex.INPUT_POLAR)
 
     @staticmethod
