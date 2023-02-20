@@ -141,14 +141,7 @@ class ComplexMath:
     @staticmethod
     def divide(num1: Complex, num2: Complex) -> Complex:
         '''Divides 2 complex numbers'''
-        # Check to prevent any weird behaviour in divison, such as 0.9999999999999991
-        re_term_numerator = (num1.get_re_component() * num2.get_re_component() + num1.get_im_component() * num2.get_im_component())
-        im_term_numerator = (num1.get_im_component() * num2.get_re_component() - num1.get_re_component() * num2.get_im_component())
-        denominator =  (num2.get_re_component() ** 2 + num2.get_im_component() ** 2)
-        if float(re_term_numerator).is_integer() and float(im_term_numerator).is_integer() and float(denominator).is_integer():
-            return Complex(re_term_numerator/ denominator, im_term_numerator / denominator, Complex.INPUT_RECT)
-
-        # Number is not in the form x/y where x and y in R, thus use the quick method
+        # Fast method of complex number division using the polar form
         return Complex(num1.get_modulus() / num2.get_modulus(), num1.get_angle() - num2.get_angle(), Complex.INPUT_POLAR)
 
     @staticmethod
