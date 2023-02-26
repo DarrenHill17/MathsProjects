@@ -37,6 +37,6 @@ class Polynomial:
         try:
             output_list.append(float(integration_constant))
         except ValueError:
-            output_list.append(integration_constant)
+            output_list.append(str(integration_constant))
 
         return tuple(output_list)
